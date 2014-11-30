@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.hippoedit.com/xml/package-info">
+<package-info xmlns="http://www.hippoedit.com/xml/package-info" xmlns:smf="http://www.hippoedit.com/">
+	<id>BD0E9FF6-D014-4E28-A8A1-EA46AC1B6FE4</id>
+	<name>Close Tag</name>
+	<version>1.0</version>
+	<preferred>1.51.0</preferred>
+	<required>1.51.0</required>
+	<description>Auto Close Tag plug-in for XML/HTML based languages </description>
+	<author>HippoEDIT.com</author>
+	<email>supportbox@hippoedit.com</email>
+	<homepage>http://wiki.hippoedit.com/plugins/close-tag</homepage>
+	<memo></memo>
+	<install>
+		<readme type="inline">This will install Close Tag plugin for HippoEDIT.</readme>
+		<require-file name="close_tag.hejs" destination="%{plugins}%/close tag.hejs" />
+		<install-plugin path="%{plugins}%/close_tag.hejs"/>
+	</install>
+	<uninstall>
+		<readme type="inline">This will uninstall Close Tag plugin for HippoEDIT.</readme>
+		<uninstall-plugin id="BD0E9FF6-D014-4E28-A8A1-EA46AC1B6FE4"/>
+		<remove-file name="%{plugins}%/close_tag.hejs" />		
+	</uninstall>
+</package-info>

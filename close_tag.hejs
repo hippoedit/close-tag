@@ -1,0 +1,29 @@
+Application.AddScriptInfo("BD0E9FF6-D014-4E28-A8A1-EA46AC1B6FE4", "Close Tag", "1.0", "Auto Close Tag plugin for XML/HTML based languages ", "HippoEDIT.com", "supportbox@hippoedit.com", "http://wiki.hippoedit.com/plugins/close-tag");
+
+function onSlash(oView, nKey, bUp, bShift, bControl, bAlt) {
+	var sel = oView.Selection;
+	if (sel.IsEmpty) {
+		var style_range = oView.Document.GetStyleFromPos(oView.Position);
+		if (style_range.Style.ID == "xml_open_tag") {
+			var line = oView.Document.GetLine(oView.Position.Line);
+			var caret = oView.Position;
+			if (caret.Pos && line.charAt(caret.Pos - 1) != "<") {
+				oView.Document.InsertText(caret, "/>", AddUndoActionType("Auto Close Tag"));
+				return true;
+			} else if (caret.Pos && line.charAt(caret.Pos - 1) == "<") {
+				var open_tags = oView.Document.NotClosedScopes;
+				for (i = open_tags.length; i >= 1; --i) {
+					if (open_tags[i].Open.Top >= caret.Line && open_tags[i].Open.Left <= caret.Pos) {
+						var tagName = open_tags[i].Name;
+						if ( tagName == "" ) tagName = oView.Document.GetText(open_tags[i].Open);
+						oView.Document.InsertText(caret, "/" + tagName + ">", AddUndoActionType("Auto Close Tag"));
+						return true;
+					}
+				}
+			}
+		}
+	}
+	return false;
+}
+
+Application.RegisterShortKey("/", new ShortKey(onSlash), "xml");
