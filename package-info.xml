@@ -3,7 +3,7 @@
 <package-info xmlns="http://www.hippoedit.com/xml/package-info" xmlns:smf="http://www.hippoedit.com/">
 	<id>BD0E9FF6-D014-4E28-A8A1-EA46AC1B6FE4</id>
 	<name>Close Tag</name>
-	<version>1.0</version>
+	<version>1.2</version>
 	<preferred>1.51.0</preferred>
 	<required>1.51.0</required>
 	<description>Auto Close Tag plug-in for XML/HTML based languages </description>
@@ -13,7 +13,7 @@
 	<memo></memo>
 	<install>
 		<readme type="inline">This will install Close Tag plugin for HippoEDIT.</readme>
-		<require-file name="close_tag.hejs" destination="%{plugins}%/close tag.hejs" />
+		<require-file name="close_tag.hejs" destination="%{plugins}%/close_tag.hejs" />
 		<install-plugin path="%{plugins}%/close_tag.hejs"/>
 	</install>
 	<uninstall>
